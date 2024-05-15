@@ -36,4 +36,16 @@ app.get("/api/recipes/:id", (req, res) => {
   res.json(recipe);
 });
 
+app.get("/api/category/:id", (req, res) => {
+  const idCapitalized =
+    req.params.id.charAt(0).toUpperCase() + req.params.id.slice(1);
+
+  const recipesPerCategory =
+    idCapitalized === "All"
+      ? recipes
+      : recipes.filter((recipe) => recipe.category === idCapitalized);
+
+  res.json(recipesPerCategory);
+});
+
 app.listen(port, () => console.log(`Server running on port ${port}`));
