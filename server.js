@@ -1,10 +1,15 @@
 import express from "express";
+//var cors = require('cors')
+import cors from "cors";
+
 import recipes from "./recipes.js";
 
 const port = 5000;
 
 const app = express();
 app.enable("trust proxy");
+
+app.use(cors());
 
 app.get("/", (req, res) => {
   // console.log(req.ip);
